@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function HomeScreen() {
+export default function SearchScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>
-        Telaê 🎬
+        Buscar 🔎
       </Text>
 
       <Text style={styles.subtitle}>
-        Seu universo de filmes e séries
+        Encontre filmes e séries
       </Text>
     </View>
   );
@@ -19,11 +19,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#000',
+    backgroundColor: '#000'
   },
 
   title: {
-    fontSize: 40,
+    fontSize: 32,
     fontWeight: 'bold',
     color: '#fff',
   },
