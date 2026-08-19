@@ -1,19 +1,22 @@
 import { useState } from 'react';
 import {
-    FlatList,
-    Image,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
+  FlatList,
+  Image,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from 'react-native';
 
 import { searchMovies } from '@/services/tmdb';
+import { useRouter } from 'expo-router';
 
 const IMAGE_BASE = 'https://image.tmdb.org/t/p/w500';
 
 export default function SearchScreen() {
+  const router = useRouter();
+
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState<any[]>([]);
 
@@ -46,7 +49,10 @@ export default function SearchScreen() {
         data={movies}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          <TouchableOpacity style={styles.card}>
+          <TouchableOpacity
+            style={styles.card}
+            onPress={() => router.push(`/movie/${item.id}`)}
+          >
 
             {item.poster_path ? (
               <Image

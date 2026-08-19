@@ -15,3 +15,14 @@ export async function searchMovies(query: string) {
 
   return data.results;
 }
+
+
+export async function getMovieDetails(id: string) {
+  const response = await fetch(
+    `${BASE_URL}/movie/${id}?api_key=${API_KEY}&language=pt-BR`
+  );
+
+  const data = await response.json();
+
+  return data;
+}
