@@ -1,7 +1,26 @@
+import { useUser } from '@/contexts/UserContext';
 import { router } from 'expo-router';
+import { useState } from 'react';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 export default function RegisterScreen() {
+  const { createUser } = useUser();
+
+  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  function handleRegister() {
+    createUser({
+      name,
+      username,
+      email,
+    });
+
+    router.replace('/profile-setup');
+  }
+
   return (
     <View style={styles.container}>
 
@@ -21,12 +40,16 @@ export default function RegisterScreen() {
         placeholder="Nome"
         placeholderTextColor="#888"
         style={styles.input}
+        value={name}
+        onChangeText={setName}
       />
 
       <TextInput
         placeholder="@Usuário"
         placeholderTextColor="#888"
         style={styles.input}
+        value={username}
+        onChangeText={setUsername}
       />
 
       <TextInput
@@ -34,6 +57,8 @@ export default function RegisterScreen() {
         placeholderTextColor="#888"
         keyboardType="email-address"
         style={styles.input}
+        value={email}
+        onChangeText={setEmail}
       />
 
       <TextInput
@@ -41,11 +66,13 @@ export default function RegisterScreen() {
         placeholderTextColor="#888"
         secureTextEntry
         style={styles.input}
+        value={password}
+        onChangeText={setPassword}
       />
 
       <TouchableOpacity
         style={styles.button}
-        onPress={() => router.replace('/tabs')}
+        onPress={handleRegister}
       >
         <Text style={styles.buttonText}>
           Continuar

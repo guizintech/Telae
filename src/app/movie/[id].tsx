@@ -135,6 +135,17 @@ export default function MovieDetailsScreen() {
             ⭐ {movie.vote_average?.toFixed(1)} / 10
           </Text>
 
+          <Pressable
+            style={styles.reviewButton}
+            onPress={() =>
+              router.push(`/movie/review/${movie.id}`)
+            }
+          >
+          <Text style={styles.reviewButtonText}>
+              ⭐ Avaliar este filme
+          </Text>
+          </Pressable>
+
 
           <Text style={styles.sectionTitle}>
             Sinopse
@@ -322,6 +333,20 @@ const styles = StyleSheet.create({
   fullImage: {
     width: '100%',
     height: '80%',
+  },
+
+  reviewButton: {
+  marginTop: 25,
+  backgroundColor: '#920909',
+  paddingVertical: 15,
+  borderRadius: 12,
+  alignItems: 'center',
+  },
+
+  reviewButtonText: {
+  color: '#fff',
+  fontSize: 17,
+  fontWeight: 'bold',
   },
 
 });
