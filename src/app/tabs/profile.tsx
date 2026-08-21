@@ -18,7 +18,7 @@ export default function ProfileScreen() {
 
   const { user } = useUser();
 
-  const { reviews } = useReview();
+  const { reviews = [] } = useReview();
 
 
   return (
@@ -76,7 +76,8 @@ export default function ProfileScreen() {
             0
           </Text>
 
-          <Text style={styles.label}>
+          <Text style={styles.label}
+          >
             Seguindo
           </Text>
         </View>
@@ -180,6 +181,7 @@ export default function ProfileScreen() {
 
 
           ))
+
 
         )
       }
@@ -327,8 +329,6 @@ const styles = StyleSheet.create({
         scale:0.65
       }
     ],
-
-    transformOrigin:'left center',
   },
 
 

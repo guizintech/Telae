@@ -1,3 +1,4 @@
+import { AuthProvider } from '@/contexts/AuthContext';
 import { ReviewProvider } from '@/contexts/ReviewContext';
 import { UserProvider } from '@/contexts/UserContext';
 
@@ -11,6 +12,7 @@ import { AnimatedSplashOverlay } from '@/components/animated-icon';
 SplashScreen.preventAutoHideAsync();
 
 
+
 export default function RootLayout() {
 
   const colorScheme = useColorScheme();
@@ -18,41 +20,54 @@ export default function RootLayout() {
 
   return (
 
-    <UserProvider>
+    <AuthProvider>
 
-      <ReviewProvider>
+      <UserProvider>
 
-        <ThemeProvider
-          value={
-            colorScheme === 'dark'
-              ? DarkTheme
-              : DefaultTheme
-          }
-        >
-
-          <AnimatedSplashOverlay />
+        <ReviewProvider>
 
 
-          <Stack
+          <ThemeProvider
 
-            screenOptions={{
+            value={
+              colorScheme === 'dark'
+                ? DarkTheme
+                : DefaultTheme
+            }
 
-              headerShown: false,
-
-              animation: 'slide_from_right',
-
-              animationDuration: 300,
-
-            }}
-
-          />
+          >
 
 
-        </ThemeProvider>
+            <AnimatedSplashOverlay />
 
-      </ReviewProvider>
 
-    </UserProvider>
+
+            <Stack
+
+              screenOptions={{
+
+                headerShown: false,
+
+                animation: 'slide_from_right',
+
+                animationDuration: 300,
+
+              }}
+
+            />
+
+
+
+          </ThemeProvider>
+
+
+        </ReviewProvider>
+
+
+      </UserProvider>
+
+
+    </AuthProvider>
 
   );
 
